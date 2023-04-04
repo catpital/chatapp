@@ -1,46 +1,33 @@
-#include <iostream>
+//Напишите программу, которая сможет считывать из файла при своей загрузке и записывать в файл
+//состояния объектов классов User и Message(для каждого класса свой файл) :
+//    Сделайте это таким образом, чтобы файлы были недоступны для других пользователей, то есть чтобы
+//    прочитать или записать информацию в файлы мог бы только пользователь, который запускает программу.
+#include <io.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <string>
-//#include "messages.h"
-//#include "chat.h"
-//#include "chat.cpp"
+#include <iostream>
+#include <fstream> 	
+#include <iostream>	
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include "user.cpp"
+#include "message.cpp"
 using namespace std;
-
+//int S_IRUSR, S_IWUSR, S_IXUSR = 1;
 
 int main()
 {
-	int operation = 10;
-	setlocale(LC_ALL, "");
-	while (operation != 0) {
-		cout << "�������� ��������:" << endl;
-		cout << "1 - ����������� ������������" << endl;
-		cout << "2 - ���� � ���" << endl;
-		//cout << "3 - ������� ���������������� ��� " << endl;
-		cout << "4 - �������� ������������" << endl;
-		cout << "0 - �����" << endl;
-		cin >> operation;
-		switch (operation)
-		{
-		case 1:
-		{
-			cout << "����� 1" << endl;
-			//Persona::setnewuser();
-			break; }
-		case 2:
-		{
-			// Chat chat 
-			break; }
-		case 3:
-		{
-			// chane name or login
-			break; }
-		case 0:
-		{ cout << "�����" << endl;
-		break; }
-		default:
-		{
-			break;
-		}
-		} // switch
-	} //while
+    
+    readuserfile();
+    User user("Alex", "alex", "12345");
+    writeuserfile(user);
+   readuserfile();
+   //readmessagefile();
+    //Message message("Vsem privet", "Alex", "ALL");
+    //writemessagefile(message);
+    //readmessagefile();
+    
 	return 0;
 }
